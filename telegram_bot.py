@@ -1,14 +1,19 @@
 import telegram
 from dotenv import load_dotenv
 import os
+import time
+import os
+import random
 
 
 def main():
     load_dotenv()
-    TG_TOKEN = os.environ['TELEGRAM_TOKEN']
-    CHAT_ID = os.environ['CHAT_ID']
-    bot = telegram.Bot(TG_TOKEN)
-    bot.send_document(CHAT_ID, document=open('nasa_images/image_38.jpg', 'rb'))
+    bot = telegram.Bot(os.environ['TELEGRAM_TOKEN'])
+    for root, dirs, files in os.walk('nasa_images'):
+        print(f'{root}{files}')
+        while True:
+            bot.send_document(os.environ['CHAT_ID'], document=open(f'{root}/{random.choice(files)}', 'rb'))
+            time.sleep(int(os.environ['FREQ_PUBLISH']))
 
 
 if __name__ == "__main__":
