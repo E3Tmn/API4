@@ -13,8 +13,9 @@ pip install -r requirements.txt
 Для работы с телеграммом ```telegram_bot.py``` необходимо создать файл ```.env```, записав в него необходимые переменные.
 ```bash
 TELEGRAM_TOKEN = "Уникальный токен от телеграм бота"
-CHAT_ID = "Ссылка на телеграм канал"
+TG_CHAT_ID = "Ссылка на телеграм канал"
 FREQ_PUBLISH = 'Частота публикаций(в секундах)'
+DEMO_KEY = "Токен сайта"
 ```
 ## Запуск
 Запуск на Linux(Python 3) или Windows:
@@ -25,4 +26,9 @@ $ python nasa_apod.py
 Запуск на Linux(Python 3) или Windows:
 ```bash
 $ python spacex_launch.py --id 5eb87d46ffd86e000604b388
+```
+При запуске ```nasa_apod.py``` или ```nasa_epic.py``` есть возможность передавать count - количество фотографий. Например:
+Запуск на Linux(Python 3) или Windows:
+```bash
+$ python spacex_launch.py --count 5
 ```
