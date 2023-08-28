@@ -3,11 +3,11 @@ import argparse
 from download import download_a_picture
 
 
-def fetch_spacex_launch(id):
-    spacex_url = f'https://api.spacexdata.com/v5/launches/{id}'
+def fetch_spacex_launch(launch_id):
+    spacex_url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
     response = requests.get(spacex_url)
     response.raise_for_status()
-    if args.id:
+    if launch_id:
         list_of_picture = response.json()['links']['flickr']['original']
     else:
         launch_number = 22
@@ -20,7 +20,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--id', default="")
     args = parser.parse_args()
-    try:
-        fetch_spacex_launch(args.id)
-    except requests.exceptions.HTTPError as err:
-        print(err)
+    fetch_spacex_launch(args.id)
+ 
