@@ -4,7 +4,8 @@ from urllib.parse import urlparse
 
 
 def fetch_file_extension(url):
-    return(os.path.splitext(urlparse(url).path)[1])
+    path = urlparse(url).path
+    return os.path.splitext(path)[1]
 
 
 def download_a_picture(url, path, number):
