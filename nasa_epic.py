@@ -23,7 +23,7 @@ def fetch_nasa_epic_picture(count, NASA_API_KEY):
     nasa_date_url = 'https://api.nasa.gov/EPIC/api/natural/date/'
     today = datetime.date.today()
     for number in range(count):
-        day = today - datetime.timedelta(days=i)
+        day = today - datetime.timedelta(days=number)
         response_date = requests.get(f'{nasa_date_url}{day.strftime("%Y-%m-%d")}', params=payload)
         response_date.raise_for_status()
         dates = response_date.json()
