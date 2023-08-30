@@ -14,8 +14,8 @@ pip install -r requirements.txt
 ```bash
 TELEGRAM_TOKEN = "Уникальный токен от телеграм бота"
 TG_CHAT_ID = "Ссылка на телеграм канал"
-FREQ_PUBLISH = 'Частота публикаций(в секундах)'
-DEMO_KEY = "Токен сайта"
+PATH_TO_FOLDER = 'Путь до файла, где берем фото'
+NASA_API_KEY = "Токен сайта"
 ```
 ## Запуск
 Запуск на Linux(Python 3) или Windows:
