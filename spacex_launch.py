@@ -16,9 +16,14 @@ def fetch_spacex_launch(launch_id):
         download_a_picture(link_to_the_picture, 'spacex_images', num_of_picture)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--id', default="")
     args = parser.parse_args()
     fetch_spacex_launch(args.id)
+
+
+if __name__ == "__main__":
+    main()
+    
  
