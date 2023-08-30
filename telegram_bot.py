@@ -1,15 +1,15 @@
 import telegram
 from dotenv import load_dotenv
-import os
 import time
 import os
 import random
 import argparse
 
+
 def main():
     load_dotenv()
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path', default=os.environ("PATH_TO_FOLDER"))
+    parser.add_argument('--path', default=os.environ["PATH_TO_FOLDER"])
     parser.add_argument('--seconds', default=14400, type=int)
     args = parser.parse_args()
     bot = telegram.Bot(os.environ['TELEGRAM_TOKEN'])
@@ -22,9 +22,7 @@ def main():
             except telegram.error.NetworkError:
                 print("network error")
                 break
-    
+
 
 if __name__ == "__main__":
     main()
-    
-
