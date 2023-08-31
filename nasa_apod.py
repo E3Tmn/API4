@@ -5,9 +5,9 @@ from download import download_a_picture
 from dotenv import load_dotenv
 
 
-def fetch_nasa_apod_picture(count, NASA_API_KEY):
+def fetch_nasa_apod_picture(count, nasa_api_key):
     payload = {
-        'api_key': NASA_API_KEY,
+        'api_key': nasa_api_key,
         'count': count
         }
     nasa_url = 'https://api.nasa.gov/planetary/apod'
@@ -20,11 +20,11 @@ def fetch_nasa_apod_picture(count, NASA_API_KEY):
 
 def main():
     load_dotenv()
-    NASA_API_KEY = os.environ['NASA_API_KEY']
+    nasa_api_key = os.environ['NASA_API_KEY']
     parser = argparse.ArgumentParser()
     parser.add_argument('--count', default="50")
     args = parser.parse_args()
-    fetch_nasa_apod_picture(args.count, NASA_API_KEY)
+    fetch_nasa_apod_picture(args.count, nasa_api_key)
 
 
 if __name__ == "__main__":
