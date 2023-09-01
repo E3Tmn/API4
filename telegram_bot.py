@@ -8,9 +8,12 @@ import argparse
 
 def main():
     load_dotenv()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--path', default=os.environ["PATH_TO_FOLDER"])
-    parser.add_argument('--seconds', default=14400, type=int)
+    parser = argparse.ArgumentParser(
+        description='Программа позволяет выбрать картинку, которая будет опубликована в телеграм канале'
+    )
+    parser.add_argument('--path', default=os.environ["PATH_TO_FOLDER"], help='Путь до картинки')
+    parser.add_argument('--seconds', default=14400, type=int, help='Частота публикаций картинок')
+    parser.add_argument('--filename', help='Название картинки')
     args = parser.parse_args()
     bot = telegram.Bot(os.environ['TELEGRAM_TOKEN'])
     while True:
@@ -22,7 +25,7 @@ def main():
             except telegram.error.NetworkError:
                 print("network error")
                 break
-
+        time.sleep(args.seconds)
 
 if __name__ == "__main__":
     main()
