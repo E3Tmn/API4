@@ -19,7 +19,8 @@ def main():
     while True:
         for root, dirs, files in os.walk(args.path):
             try:
-                with open(os.path.join(root, random.choice(files)), 'rb') as file:
+                filename = args.filename if args.filename else random.choice(files)
+                with open(os.path.join(root, filename), 'rb') as file:
                     bot.send_document(os.environ['TG_CHAT_ID'], document=file)
                 time.sleep(args.seconds)
             except telegram.error.NetworkError:
