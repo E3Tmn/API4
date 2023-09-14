@@ -16,23 +16,24 @@ def main():
     parser.add_argument('--filename', help='Название картинки')
     args = parser.parse_args()
     bot = telegram.Bot(os.environ['TELEGRAM_TOKEN'])
-    b_first_lap = True
+    infinity = True
     delay = 1
-    while True:
+    while infinity:
         for root, dirs, files in os.walk(args.path):
             time.sleep(delay)
-            delay = args.seconds
-            try:
-                if args.filename and b_first_lap:
-                    filename = args.filename
-                    b_first_lap = False
-                else:
-                    filename = random.choice(files)
-                with open(os.path.join(root, filename), 'rb') as file:
+            if args.filename:
+                filename = args.filename
+                infinity = False
+            else:
+                filename = random.choice(files)
+            with open(os.path.join(root, filename), 'rb') as file:
+                try:
                     bot.send_document(os.environ['TG_CHAT_ID'], document=file)
-            except telegram.error.NetworkError:
-                print("network error")
-                break
+                    delay = args.seconds
+                except telegram.error.NetworkError:
+                    print("network error")
+                    delay = 60
+                    break
 
 
 if __name__ == "__main__":
